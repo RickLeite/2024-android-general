@@ -28,20 +28,29 @@ class MainActivity : AppCompatActivity() {
         buttonCalculate.setOnClickListener  {
             val nomeUser = findViewById<EditText>(R.id.editTextName).text.toString()
             val idadeUser = findViewById<EditText>(R.id.editTextAge).text.toString()
-            val pesoUser = findViewById<EditText>(R.id.editTextWeight).text.toString().toDouble()
-            val alturaUser = findViewById<EditText>(R.id.editTextHeight).text.toString().toDouble()
+            val pesoUser = findViewById<EditText>(R.id.editTextWeight).text.toString()
+            val alturaUser = findViewById<EditText>(R.id.editTextHeight).text.toString()
 
-            val user = User(nomeUser, idadeUser.toInt(), pesoUser, alturaUser)
+            var user: User? = null
 
+            if (nomeUser.isEmpty() || idadeUser.isEmpty() || pesoUser.isEmpty() || alturaUser.isEmpty()) {
+                Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_LONG).show()
+            } else {
+                try {
+                    user = User(nomeUser, idadeUser.toInt(), pesoUser.toDouble(), alturaUser.toDouble())
+                } catch (e: NumberFormatException) {
+                    Toast.makeText(this, "Por favor, insira números válidos para idade, peso e altura", Toast.LENGTH_LONG).show()
+                }
+            }
 
-            val textViewHiddenResultClassificacao = findViewById<TextView>(R.id.textViewHiddenResultClassificacao)
-            textViewHiddenResultClassificacao.text = user.calcularIMC().toString()
-            textViewHiddenResultClassificacao.visibility = View.VISIBLE
-
-            val textViewHiddenResultFaixa = findViewById<TextView>(R.id.textViewHiddenResultFaixa)
-            textViewHiddenResultFaixa.text = user.faixasIMC()
-            textViewHiddenResultFaixa.visibility = View.VISIBLE
-
+            if (user != null) {
+                val textViewHiddenResultClassificacao = findViewById<TextView>(R.id.textViewHiddenResultClassificacao)
+                textViewHiddenResultClassificacao.text = user.calcularIMC().toString()
+                textViewHiddenResultClassificacao.visibility = View.VISIBLE
+                val textViewHiddenResultFaixa = findViewById<TextView>(R.id.textViewHiddenResultFaixa)
+                textViewHiddenResultFaixa.text = user.faixasIMC()
+                textViewHiddenResultFaixa.visibility = View.VISIBLE
+            }
 
 
         }
