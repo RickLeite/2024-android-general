@@ -1,0 +1,26 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/nav_main"
+app:startDestination="@id/fragmentA">
+
+<fragment
+    android:id="@+id/fragmentA"
+    android:name="com.example.fragments_0404.FragmentA"
+    android:label="Fragmento A"
+    tools:layout="@layout/fragment_a" >
+    <action
+        android:id="@+id/action_fragmentA_to_fragmentB"
+        app:destination="@id/fragmentB" />
+</fragment>
+<fragment
+    android:id="@+id/fragmentB"
+    android:name="com.example.fragments_0404.FragmentB"
+    android:label="Fragmento B"
+    tools:layout="@layout/fragment_b" >
+    <argument
+        android:name="name"
+        app:argType="string"
+        android:defaultValue="string vazia" />
+</fragment>
+</navigation>
