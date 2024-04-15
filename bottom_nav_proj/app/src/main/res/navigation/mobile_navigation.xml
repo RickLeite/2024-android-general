@@ -1,0 +1,18 @@
+<navigation xmlns:android=
+    "http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.bottom_nav_proj.HomeFragment"
+        android:label="@string/bottom_nav_home"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+    <fragment
+        android:id="@+id/nav_dashboard"
+        android:name="com.example.bottom_nav_proj.RelatorioFragment"
+        android:label="@string/bottom_nav_dashboard"
+        tools:layout="@layout/fragment_relatorio" />
+</navigation>
