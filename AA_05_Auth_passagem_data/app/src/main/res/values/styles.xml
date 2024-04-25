@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="Widget.Theme.AppCompat.NoActionBar.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="BackgroundAPPCinza">
+        <item name="android:background">#B8E3FF</item>
+    </style>
+
+</resources>

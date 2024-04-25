@@ -1,0 +1,95 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/logoFragment">
+
+    <fragment
+        android:id="@+id/logoFragment"
+        android:name="com.mobile.pratica.AA_05.LogoInicialFragment"
+         android:label="Logo Fragment"
+        tools:layout="@layout/fragment_logo_inicial" >
+        <action
+            android:id="@+id/action_logoInicialFragment_to_navigation"
+            app:destination="@id/autenticacao"
+            app:popUpTo="@id/logoFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_logoFragment_to_inicioGeralFragment"
+            app:destination="@id/InicioGeralFragment"
+            app:popUpTo="@id/logoFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+    <navigation android:id="@+id/autenticacao"
+        app:startDestination="@id/loginFragment">
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.mobile.pratica.AA_05.auth.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login"
+            >
+            <action
+                android:id="@+id/action_loginFragment_to_criarContaFragment"
+                app:destination="@id/criarContaFragment" />
+            <action
+                android:id="@+id/action_loginFragment_to_recuperarContaFragment"
+                app:destination="@id/recuperarContaFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/criarContaFragment"
+            android:name="com.mobile.pratica.AA_05.auth.CriarContaFragment"
+            android:label="fragment_criar_conta"
+            tools:layout="@layout/fragment_criar_conta" />
+        <fragment
+            android:id="@+id/recuperarContaFragment"
+            android:name="com.mobile.pratica.AA_05.auth.RecuperarContaFragment"
+            android:label="fragment_recuperar_conta"
+            tools:layout="@layout/fragment_recuperar_conta" />
+        <action
+            android:id="@+id/action_global_inicioGeralFragment"
+            app:destination="@id/InicioGeralFragment"
+            app:popUpTo="@id/autenticacao"
+            app:popUpToInclusive="true"/>
+
+
+    </navigation>
+
+
+    <fragment
+        android:id="@+id/InicioGeralFragment"
+        android:name="com.mobile.pratica.AA_05.InicioGeralFragment"
+        android:label="Inicio Geral Fragment"
+        tools:layout="@layout/fragment_inicio_geral">
+
+        <action
+            android:id="@+id/action_InicioGeralFragment_to_inputFragment"
+            app:destination="@id/inputFragment" />
+        <action
+            android:id="@+id/action_InicioGeralFragment_to_displayFragment"
+            app:destination="@id/displayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayFragment"
+        android:name="com.mobile.pratica.AA_05.fun.DisplayFragment"
+        android:label="DisplayFragment"
+        tools:layout="@layout/fragment_display" />
+
+    <fragment
+        android:id="@+id/inputFragment"
+        android:name="com.mobile.pratica.AA_05.fun.InputFragment"
+        android:label="InputFragment">
+
+        <action
+            android:id="@+id/action_inputFragment_to_outputFragment"
+            app:destination="@id/displayFragment">
+            <argument
+                android:name="inputText"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+
+</navigation>
